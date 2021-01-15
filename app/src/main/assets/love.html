@@ -40,11 +40,11 @@
 
         <div id="code">
             <span class="comments">/**</span><br/>
-            <span class="space"/><span class="comments">*2020—12-15,</span><br/>
-            <span class="space"/><span class="comments">*2021-01-15.</span><br/>
+            <span class="space"/><span class="comments">*2020-12-15 13:07:25,</span><br/>
+            <span class="space"/><span class="comments" id="curDate">*2021-01-15.</span><br/>
             <span class="space"/><span class="comments">*/</span><br/>
-            Boy name = <span class="keyword">Mr</span> ChenBo<br/>
-            Girl name = <span class="keyword">Mrs</span> FanHongChu<br/>
+            Boy name = <span class="keyword">Mr</span> ChenBo;<br/>
+            Girl name = <span class="keyword">Mrs</span> FanHongChu;<br/>
             <span class="comments">// Fall in love river. </span><br/>
             The boy love the girl;<br/>
             <span class="comments">// They love each other.</span><br/>
@@ -76,6 +76,11 @@
 </div>
 
 <script type="text/javascript">
+
+var now = new Date();
+var curDate = "*" + now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate() + ".";
+$("#curDate").text(curDate);
+
 var offsetX = $("#loveHeart").width() / 2;
 var offsetY = $("#loveHeart").height() / 2 - 55;
 var together = new Date();

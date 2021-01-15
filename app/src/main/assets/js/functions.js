@@ -3,6 +3,7 @@ var $window = $(window), gardenCtx, gardenCanvas, $garden, garden;
 var clientWidth = $(window).width();
 var clientHeight = $(window).height();
 
+
 $(function () {
     // setup garden
 	$loveHeart = $("#loveHeart");
@@ -20,6 +21,10 @@ $(function () {
 	$("#content").css("height", Math.max($loveHeart.height(), $("#code").height()));
 	$("#content").css("margin-top", Math.max(($window.height() - $("#content").height()) / 2, 10));
 	$("#content").css("margin-left", Math.max(($window.width() - $("#content").width()) / 2, 10));*/
+
+    var now = new Date();
+    var curDate = "*" + now.getFullYear() + "-" + now.getMonth() + "-" + now.getDate() + ".";
+	$("#curDate").text(curDate);
 
     // renderLoop
     setInterval(function () {
