@@ -1,21 +1,35 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "30.0.1"
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "cn.cb.love"
-        minSdkVersion 14
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 11
+        versionName "1.1"
+
+        buildConfigField("String", "UPDATE_URL", "\"http://121.15.209.245:9002/appUpdate/cn.cb.love/update.txt\"")
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    applicationVariants.all {
+        variant ->
+            variant.outputs.all {
+                if (buildType.name == "debug") {
+                    outputFileName = "love.D_V${defaultConfig.versionName}.apk"
+                } else {
+                    def createTime = new Date().format("YYYYMMddHHmm", TimeZone.getTimeZone("GMT+08:00"))
+                    outputFileName = "love.R_V${defaultConfig.versionName}_${createTime}.apk"
+                }
+            }
     }
 
     lintOptions {
@@ -31,4 +45,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'io.reactivex:rxandroid:1.0.1'
+
+    implementation 'com.github.q471208499:AndBaseCB:1.1.25'
 }

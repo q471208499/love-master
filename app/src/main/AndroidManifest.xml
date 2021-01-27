@@ -6,6 +6,7 @@
         android:icon="@mipmap/malin"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:name=".LApplication"
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         <activity
             android:name="com.love.activity.MainActivity"

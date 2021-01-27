@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.love.BuildConfig;
 import com.love.R;
 import com.love.factory.ImageNameFactory;
 import com.love.util.ClickUtils;
@@ -35,6 +36,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
+import cn.cb.baselibrary.utils.ABTimeUtils;
+import cn.cb.baselibrary.utils.AppUpdateHelper;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -70,13 +73,13 @@ public class MainActivity extends Activity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new AppUpdateHelper(BuildConfig.UPDATE_URL + "?" + ABTimeUtils.getCurrentTimeInString()).getUpdateInfo();
         DeviceInfo.getInstance().initializeScreenInfo(this);
         setContentView(R.layout.main);
         initView();
         initWebView();
         bindListener();
-        delayShowAll(3000L);
-
+        delayShowAll(5000L);
     }
 
 
